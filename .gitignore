@@ -1,0 +1,12 @@
+install/include/
+install/lib/
+install/bin/
+install/cmake/
+
+external/Json
+external/ScreepsApi
+external/ScreepsApiV12
+external/ScreepsSimpleClient
+external/SimpleWebServer
+
+build/
