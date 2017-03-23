@@ -9,6 +9,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 set ( LocalInstallDir ${CMAKE_SOURCE_DIR}/install )
+set ( GithubRepositoryRoot https://github.com/Menhirs-Screeps)
 
 include (ExternalProject)
 function ( CloneExternal name repository args )
@@ -24,22 +25,22 @@ endfunction ()
 #                -DScreepsApi_DIR=${LocalInstallDir}/cmake
 #                -DSimple-Web-Server_DIR=${LocalInstallDir}/cmake 
 
-CloneExternal ( Json https://github.com/Lyon1-Asterix/json.git
+CloneExternal ( Json ${GithubRepositoryRoot}/json.git
                 "-DBuildTests=OFF"
             )
 
-CloneExternal ( WebApi https://github.com/Lyon1-Asterix/WebApi.git
+CloneExternal ( WebApi ${GithubRepositoryRoot}/WebApi.git
                 ""
             )
 
-CloneExternal ( ScreepsApi https://github.com/Lyon1-Asterix/ScreepsApi.git
+CloneExternal ( ScreepsApi ${GithubRepositoryRoot}/ScreepsApi.git
                 " \
                 -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
                 "
             )
 add_dependencies(ScreepsApi Json)
 
-CloneExternal ( ScreepsApiV12 https://github.com/Lyon1-Asterix/ScreepsApi-V12.git
+CloneExternal ( ScreepsApiV12 ${GithubRepositoryRoot}/ScreepsApi-V12.git
                 " \
                 -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
                 -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
@@ -48,7 +49,7 @@ CloneExternal ( ScreepsApiV12 https://github.com/Lyon1-Asterix/ScreepsApi-V12.gi
 add_dependencies(ScreepsApiV12 Json)
 add_dependencies(ScreepsApiV12 ScreepsApi)
 
-CloneExternal ( TerminalClient https://github.com/Lyon1-Asterix/Screeps-TerminalClient.git
+CloneExternal ( TerminalClient ${GithubRepositoryRoot}/Screeps-TerminalClient.git
                 " \
                 -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
                 -DSimple-Web-Server_DIR=${CMAKE_SOURCE_DIR}/external/WebApi/cmake \
