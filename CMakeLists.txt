@@ -21,11 +21,7 @@ function ( CloneExternal name repository args )
     )
 endfunction ()
 
-#                -Dnlohmann_json_DIR=${LocalInstallDir}/cmake
-#                -DScreepsApi_DIR=${LocalInstallDir}/cmake
-#                -DSimple-Web-Server_DIR=${LocalInstallDir}/cmake 
-
-CloneExternal ( Json ${GithubRepositoryRoot}/json.git
+CloneExternal ( JsonApi ${GithubRepositoryRoot}/JsonApi.git
                 "-DBuildTests=OFF"
             )
 
@@ -35,29 +31,29 @@ CloneExternal ( WebApi ${GithubRepositoryRoot}/WebApi.git
 
 CloneExternal ( ScreepsApi ${GithubRepositoryRoot}/ScreepsApi.git
                 " \
-                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/JsonApi/cmake \
                 "
             )
-add_dependencies(ScreepsApi Json)
+add_dependencies(ScreepsApi JsonApi)
 
 CloneExternal ( ScreepsApiV12 ${GithubRepositoryRoot}/ScreepsApi-V12.git
                 " \
-                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/JsonApi/cmake \
                 -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
                 "
             )
-add_dependencies(ScreepsApiV12 Json)
+add_dependencies(ScreepsApiV12 JsonApi)
 add_dependencies(ScreepsApiV12 ScreepsApi)
 
 CloneExternal ( TerminalClient ${GithubRepositoryRoot}/Screeps-TerminalClient.git
                 " \
-                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/JsonApi/cmake \
                 -DSimple-Web-Server_DIR=${CMAKE_SOURCE_DIR}/external/WebApi/cmake \
                 -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
                 -DScreepsApiV12_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApiV12/cmake \
                 "
             )
-add_dependencies(TerminalClient Json)
+add_dependencies(TerminalClient JsonApi)
 add_dependencies(TerminalClient WebApi)
 add_dependencies(TerminalClient ScreepsApi)
 add_dependencies(TerminalClient ScreepsApiV12)
