@@ -3,11 +3,12 @@ install/lib/
 install/bin/
 install/cmake/
 
-external/JsonApi
-external/WebApi
-external/WebsocketApi
-external/ScreepsApi
-external/ScreepsApiV12
-external/TerminalClient
+external/JsonApi/
+external/WebApi/
+external/WebsocketApi/
+external/ScreepsApi/
+external/ScreepsApiV12/
+external/TerminalClient/
+external/TerminalConsole/
 
 build/

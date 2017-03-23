@@ -63,3 +63,18 @@ add_dependencies(TerminalClient WebApi)
 add_dependencies(TerminalClient WebsocketApi)
 add_dependencies(TerminalClient ScreepsApi)
 add_dependencies(TerminalClient ScreepsApiV12)
+
+CloneExternal ( TerminalConsole ${GithubRepositoryRoot}/Screeps-TerminalConsole.git
+                " \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/JsonApi/cmake \
+                -DSimple-Web-Server_DIR=${CMAKE_SOURCE_DIR}/external/WebApi/cmake \
+                -DSimple-WebSocket-Server_DIR=${CMAKE_SOURCE_DIR}/external/WebsocketApi/cmake \
+                -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
+                -DScreepsApiV12_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApiV12/cmake \
+                "
+            )
+add_dependencies(TerminalConsole JsonApi)
+add_dependencies(TerminalConsole WebApi)
+add_dependencies(TerminalConsole WebsocketApi)
+add_dependencies(TerminalConsole ScreepsApi)
+add_dependencies(TerminalConsole ScreepsApiV12)
