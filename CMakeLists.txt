@@ -20,6 +20,10 @@ function ( CloneExternal name repository args )
     )
 endfunction ()
 
+#                -Dnlohmann_json_DIR=${LocalInstallDir}/cmake
+#                -DScreepsApi_DIR=${LocalInstallDir}/cmake
+#                -DSimple-Web-Server_DIR=${LocalInstallDir}/cmake 
+
 CloneExternal ( Json https://github.com/Lyon1-Asterix/json.git
                 "-DBuildTests=OFF"
             )
@@ -29,22 +33,28 @@ CloneExternal ( SimpleWebServer https://github.com/Lyon1-Asterix/Simple-Web-Serv
             )
 
 CloneExternal ( ScreepsApi https://github.com/Lyon1-Asterix/ScreepsApi.git
-                "-Dnlohmann_json_DIR=${LocalInstallDir}/cmake"
+                " \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
+                "
             )
 add_dependencies(ScreepsApi Json)
 
 CloneExternal ( ScreepsApiV12 https://github.com/Lyon1-Asterix/ScreepsApi-V12.git
-                "-Dnlohmann_json_DIR=${LocalInstallDir}/cmake \
-                -DScreepsApi_DIR=${LocalInstallDir}/cmake"
+                " \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
+                -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
+                "
             )
 add_dependencies(ScreepsApiV12 Json)
 add_dependencies(ScreepsApiV12 ScreepsApi)
 
 CloneExternal ( ScreepsSimpleClient https://github.com/Lyon1-Asterix/Screeps-SampleClient.git
-                "-Dnlohmann_json_DIR=${LocalInstallDir}/cmake \
-                -DSimple-Web-Server_DIR=${LocalInstallDir}/cmake \
-                -DScreepsApi_DIR=${LocalInstallDir}/cmake \
-                -DScreepsApiV12_DIR=${LocalInstallDir}/cmake"
+                " \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
+                -DSimple-Web-Server_DIR=${CMAKE_SOURCE_DIR}/external/SimpleWebServer/cmake \
+                -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
+                -DScreepsApiV12_DIR=${LocalInstallDir}/cmake \
+                "
             )
 add_dependencies(ScreepsSimpleClient Json)
 add_dependencies(ScreepsSimpleClient SimpleWebServer)
