@@ -40,6 +40,13 @@ CloneExternal ( ScreepsApi ${GithubRepositoryRoot}/ScreepsApi.git
             )
 add_dependencies(ScreepsApi JsonApi)
 
+CloneExternal ( ProgramApi ${GithubRepositoryRoot}/ProgramApi.git
+                " \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/JsonApi/cmake \
+                "
+            )
+add_dependencies(ProgramApi JsonApi)
+
 CloneExternal ( ScreepsApiV12 ${GithubRepositoryRoot}/ScreepsApi-V12.git
                 " \
                 -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/JsonApi/cmake \
