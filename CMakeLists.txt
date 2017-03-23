@@ -28,7 +28,7 @@ CloneExternal ( Json https://github.com/Lyon1-Asterix/json.git
                 "-DBuildTests=OFF"
             )
 
-CloneExternal ( SimpleWebServer https://github.com/Lyon1-Asterix/Simple-Web-Server.git
+CloneExternal ( WebApi https://github.com/Lyon1-Asterix/WebApi.git
                 ""
             )
 
@@ -48,15 +48,15 @@ CloneExternal ( ScreepsApiV12 https://github.com/Lyon1-Asterix/ScreepsApi-V12.gi
 add_dependencies(ScreepsApiV12 Json)
 add_dependencies(ScreepsApiV12 ScreepsApi)
 
-CloneExternal ( ScreepsSimpleClient https://github.com/Lyon1-Asterix/Screeps-SampleClient.git
+CloneExternal ( TerminalClient https://github.com/Lyon1-Asterix/Screeps-TerminalClient.git
                 " \
                 -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/Json/cmake \
-                -DSimple-Web-Server_DIR=${CMAKE_SOURCE_DIR}/external/SimpleWebServer/cmake \
+                -DSimple-Web-Server_DIR=${CMAKE_SOURCE_DIR}/external/WebApi/cmake \
                 -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
-                -DScreepsApiV12_DIR=${LocalInstallDir}/cmake \
+                -DScreepsApiV12_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApiV12/cmake \
                 "
             )
-add_dependencies(ScreepsSimpleClient Json)
-add_dependencies(ScreepsSimpleClient SimpleWebServer)
-add_dependencies(ScreepsSimpleClient ScreepsApi)
-add_dependencies(ScreepsSimpleClient ScreepsApiV12)
+add_dependencies(TerminalClient Json)
+add_dependencies(TerminalClient WebApi)
+add_dependencies(TerminalClient ScreepsApi)
+add_dependencies(TerminalClient ScreepsApiV12)
