@@ -78,3 +78,18 @@ add_dependencies(TerminalConsole WebApi)
 add_dependencies(TerminalConsole WebsocketApi)
 add_dependencies(TerminalConsole ScreepsApi)
 add_dependencies(TerminalConsole ScreepsApiV12)
+
+CloneExternal ( RoomObserver ${GithubRepositoryRoot}/Screeps-RoomObserver.git
+                " \
+                -Dnlohmann_json_DIR=${CMAKE_SOURCE_DIR}/external/JsonApi/cmake \
+                -DSimple-Web-Server_DIR=${CMAKE_SOURCE_DIR}/external/WebApi/cmake \
+                -DSimple-WebSocket-Server_DIR=${CMAKE_SOURCE_DIR}/external/WebsocketApi/cmake \
+                -DScreepsApi_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApi/cmake \
+                -DScreepsApiV12_DIR=${CMAKE_SOURCE_DIR}/external/ScreepsApiV12/cmake \
+                "
+            )
+add_dependencies(RoomObserver JsonApi)
+add_dependencies(RoomObserver WebApi)
+add_dependencies(RoomObserver WebsocketApi)
+add_dependencies(RoomObserver ScreepsApi)
+add_dependencies(RoomObserver ScreepsApiV12)
